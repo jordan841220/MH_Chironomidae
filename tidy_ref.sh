@@ -32,7 +32,7 @@ sed '/^>/! s/[^ACGTacgt]/-/g' ref/ref_ChiroWithSpeciesName_uniq_rm230_rename_COI
 
 ### modeltest
 
-/home/jordan/Software/modeltest-ng-static-v1.7 -i trimal_results/ncbi_ref_trimal.fasta -d nt -h ugfi -t ml -v -T raxml --force -o modeltest_results/modeltest.result
+#/home/jordan/Software/modeltest-ng-static-v1.7 -i trimal_results/ncbi_ref_trimal.fasta -d nt -h ugfi -t ml -v -T raxml --force -o modeltest_results/modeltest.result
 cd tree
 /home/jordan/Software/raxml-ng_v1.2.2_linux_x86_64/raxml-ng --all --msa-format FASTA --threads 20 --msa ../trimal_results/ncbi_ref_trimal.fasta --model GTR+G --bs-trees 2000 --threads 20 --prefix 2024-11-29 --bs-metric tbe --redo
 /home/jordan/Software/raxml-ng_v1.2.2_linux_x86_64/raxml-ng --bsconverge --bs-trees 2024-11-29.raxml.bootstraps --threads 20 --bs-cutoff 0.03
