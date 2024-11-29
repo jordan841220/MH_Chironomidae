@@ -1,0 +1,41 @@
+--------------------------------------------------------------------------------
+ModelTest-NG vx.y.z
+
+Input data:
+  MSA:        trimal_results/ncbi_ref_trimal.fasta
+  Tree:       Maximum likelihood
+    file:           -
+  #taxa:            5308
+  #sites:           427
+  #patterns:        346
+  Max. thread mem:  910 MB
+
+Output:
+  Log:           modeltest_results/modeltest.result.log
+  Starting tree: modeltest_results/modeltest.result.tree
+  Results:       modeltest_results/modeltest.result.out
+
+Selection options:
+  # dna schemes:      3
+  # dna models:       12
+  include model parameters:
+    Uniform:         true
+    p-inv (+I):      true
+    gamma (+G):      true
+    both (+I+G):     true
+    free rates (+R): false
+    fixed freqs:     false
+    estimated freqs: true
+    #categories:     4
+  gamma rates mode:   mean
+  asc bias:           none
+  epsilon (opt):      0.01
+  epsilon (par):      0.05
+  keep branches:      false
+
+Additional options:
+  verbosity:        high
+  threads:          20/48
+  RNG seed:         12345
+  subtree repeats:  enabled
+--------------------------------------------------------------------------------
