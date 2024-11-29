@@ -1,0 +1,62 @@
+---
+title: "Untitled"
+output: html_document
+date: "2024-11-26"
+---
+
+```{r}
+library(readr)
+library(dplyr)
+library(GUniFrac)
+library(vegan)
+
+zmap97 <- read_delim("zmap97.txt", delim = ";", escape_double = FALSE, col_names = FALSE, trim_ws = TRUE)
+zmap97_tidy <- read_csv("zmap97_tidy.txt", col_names = FALSE)
+```
+
+
+```{r}
+zmap97$sample <- zmap97_tidy$X1
+
+zmap97$X1 <- gsub("^.*le=","",zmap97$X1)
+
+zmap97$X2 <- gsub("size=","",zmap97$X2)
+
+colnames(zmap97) = c("SampleReadID","counts","ZOTU","Sample")
+
+zmap97$counts <- as.numeric(zmap97$counts)
+
+zmap97 %>% group_by(Sample, ZOTU) %>% summarise(zotu_counts = sum(counts))
+
+```
+
+
+```{r}
+rare_rawreads <- reshape2::dcast(zmap97[,-c(1)], 
+                                 Sample ~ ZOTU, 
+                                 value.var = "counts", 
+                                 fun.aggregate = sum)
+
+rownames(rare_rawreads) <- rare_rawreads$Sample
+rare_rawreads <- rare_rawreads[,-1]
+
+
+
+pdf(file = "rarecurve.pdf", width = 4, height = 8)
+rarecurve(rare_rawreads, step = 20,
+          sample = 10000,
+          col = "blue",
+          cex = 0.6,
+          main = "rarecurve()")
+dev.off()
+ 
+# filter out "A3" "A9" "D6" "S3" "S6" "S9" sampling sites
+# normalize to 8000
+rare_rawreads_norm <- as.data.frame(GUniFrac::Rarefy(rare_rawreads, depth = 8000)$otu.tab.rff)
+
+
+
+write.csv(rare_rawreads, file = "sample_zotu_matrix_raw.csv", row.names = TRUE, col.names = TRUE, quote = FALSE)
+write.csv(rare_rawreads_norm, file = "sample_zotu_matrix_norm.csv", row.names = TRUE, col.names = TRUE, quote = FALSE)
+```
+
