@@ -33,12 +33,11 @@
 | tidy_ref.sh | - trimAL 對 mafft_results/ncbi_ref.fasta 進行切除，生成 02.GAPPA_Results/trimal_results/ncbi_ref_trimal.fasta 與 02.GAPPA_Results/trimal_results/ncbi_ref_trimal.html  | Done |
 | tidy_ref.sh | - 用 raxml-ng 建立 phylogenetic tree，生成 ... | Running |
 | tidy_ref.sh | - Performing bootstrap convergence assessment using autoMRE criterion | Running |
-| tidy_ref.sh | - align query fragments (each sample) to reference，生成 align_per_sample/align_${i}_to_ref.fasta | Running |
-| tidy_ref.sh | - epa-ng 生成 jplace file 在 epa_results/ 中 | Running |
-| tidy_ref.sh | - GAPPA | Running |
 |      | - 建立 annotation .txt file 方便在 treeviewer 中視覺化 2024-11-29.raxml.bootstraps  | Pending |
 |      | - Download reference tree and rooted it in TreeViewer  | Pending |
-|      | - Align sample to reference <br> - Split MSA to only include query MSA (sample only) <br> - Epa-ng using rooted reference tree <br> - Gappa | Pending |
+| tidy_ref.sh | - align query fragments (each sample) to reference，生成 align_per_sample/align_${i}_to_ref.fasta <br> - Split MSA to only include query MSA (sample only) | Running |
+| tidy_ref.sh | - epa-ng 生成 jplace file 在 epa_results/ 中 | Running |
+| tidy_ref.sh | - GAPPA | Running |
 |      | - Visualization in R and TreeViewer | Pending |
 
 <br>
