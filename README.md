@@ -14,6 +14,7 @@
 | preprocess.sh | - 對 32 個樣站的 raw fastq（fastq）進行前處理，包含用 cutadapt 移除 primers，與用 usearch 做 merge, reverse complement 與 filter （01.ZOTU_Results/fastq_trimmed、01.ZOTU_Results/fastq_merged）   |  Done  |
 | otu.sh | - 用 usearch 做 denoise 並生成 otu 與格式整理，結果為 zotus.fa、unoise3_result.txt、zotutab97.txt、zmap97.txt 與 zmap97_tidy.txt | Done |
 | visualization.Rmd | - 用 R 做格式整理與用 R package GUniFrac 生成圖片 "rarecurve.pdf" ，與 zotu matrix "sample_zotu_matrix_raw.csv" 。 <br> - 生成標準化後的 "sample_zotu_matrix_norm.csv"，判定可以移除樣站 "A3" "A9" "D6" "S3" "S6" "S9"？ | Done |
+| visualization.Rmd | - plots: Alpha Diversity, PCoA, Heatmap, and clustering relative abundance (barplot+dendrogram)  | Done  |
 
 
 <br>
