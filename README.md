@@ -1,6 +1,8 @@
 # Chironomidae Meta-barcoding
-- PI: 郭美華老師分析
-- 簡單的 Material and Methods 會寫在 
+- PI: 郭美華老師
+- 簡單的 Material and Methods 會寫在 03.MM 中
+
+<br>
 
 
 ### 分析流程 1 - ZOUT table
@@ -14,10 +16,14 @@
 | visualization.Rmd | - 用 R 做格式整理與用 R package GUniFrac 生成圖片 "rarecurve.pdf" ，與 zotu matrix "sample_zotu_matrix_raw.csv" 。 <br> - 生成標準化後的 "sample_zotu_matrix_norm.csv"，判定可以移除樣站 "A3" "A9" "D6" "S3" "S6" "S9"？ | Done |
 
 
+<br>
+<br>
+
+
 ### 分析流程 2 - GAPPA
 
 - 此處的分析目的為整理 NCBI 下載之所有搖蚊 fasta 成 reference，建立 phylogenetic tree 後，將所有樣站的 reads align 到這個 tree 上，結果儲存在 02.GAPPA_Results 中
-
+- phylogenetic tree 檔案太大所以會另外改，不會放上來
 
 | Script      | Description                      | Status |
 |------------|----------------------------------|---------|
@@ -35,5 +41,13 @@
 |      | - Align sample to reference <br> - Split MSA to only include query MSA (sample only) <br> - Epa-ng using rooted reference tree <br> - Gappa | Pending |
 |      | - Visualization in R and TreeViewer | Pending |
 
+<br>
+<br>
 
+
+### 其他
+
+| Script      | Description                      | Status |
+|------------|----------------------------------|---------|
+|  | - 寫簡單的 mateirals and methods 在 03.MM | Pending |
 
