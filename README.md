@@ -1,21 +1,17 @@
-# Chironomidae meta-barcoding
-
-## 郭美華老師分析
-
-### 分析結果
-
-
-
-
+# Chironomidae Meta-barcoding
+- PI: 郭美華老師分析
+- 簡單的 Material and Methods 會寫在 
 
 
 ### 分析流程 1 - ZOUT table
 
-| Script      | Description                      | Status |
+- 此處的分析目的為生成 Sample-ZOTU 的 matrix 與圖片，結果儲存在 01.ZOTU_Results 中
+
+| Script      | 處理過程                      | 狀態 |
 |------------|----------------------------------|-----|
-| preprocess.sh | - 對 32 個樣站的 raw fastq 進行前處理，包含用 cutadapt 移除 primers，與用 usearch 做 merge, reverse complement 與 filter   | Done |
-| otu.sh | - 用 usearch 做 denoise 並生成 otu 與格式整理 | Done |
-| visualization.Rmd | - 用 R 做格式整理與用 R package GUniFrac 生成圖片 "rarecurve.pdf" 與 zotu matrix "sample_zotu_matrix_raw.csv" 與標準化後的 "sample_zotu_matrix_norm.csv"，判定可以移除樣站 "A3" "A9" "D6" "S3" "S6" "S9" | Done |
+| preprocess.sh | - 對 32 個樣站的 raw fastq（fastq）進行前處理，包含用 cutadapt 移除 primers，與用 usearch 做 merge, reverse complement 與 filter。 <br> - 結果在 fastq_trimmed 與 fastq_merged 中。   | Done |
+| otu.sh | - 用 usearch 做 denoise 並生成 otu 與格式整理，結果為 zotus.fa、unoise3_result.txt、zotutab97.txt、zmap97.txt 與 zmap97_tidy.txt | Done |
+| visualization.Rmd | - 用 R 做格式整理與用 R package GUniFrac 生成圖片 "rarecurve.pdf" ，與 zotu matrix "sample_zotu_matrix_raw.csv" 。 <br> - 生成標準化後的 "sample_zotu_matrix_norm.csv"，判定可以移除樣站 "A3" "A9" "D6" "S3" "S6" "S9"？ | Done |
 
 
 ### 分析流程 2 - GAPPA
