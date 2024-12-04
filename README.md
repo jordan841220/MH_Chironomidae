@@ -23,10 +23,11 @@
 
 - 此處的分析目的為訓練 RDP classifier 並分類所有 ZOTU，結果儲存在 02.Classifier_Results 中
 - ncbi search term: `(((((("Arthropoda"[Organism] OR Arthropoda[All Fields]) OR ("Annelida"[Organism] OR Annelida[All Fields])) OR ("Nematoda"[Organism] OR Nematoda[All Fields])) OR ("Platyhelminthes"[Organism] OR Platyhelminthes[All Fields])) OR ("Myxozoa"[Organism] OR Myxozoa[All Fields])) NOT sp.[All Fields]) AND COI[All Fields] AND ("640"[SLEN] : "660"[SLEN])`
+- ncbi 下載為 ref/sequence.gb 與 ref/sequence.fasta，因為檔案過大所以會另外給
 
 | Script      | 處理過程                      | 狀態 |
 |------------|----------------------------------|-----|
-| tidy_ref.Rmd | - 整理 ncbi 下載 ~640000 個序列的 sequence.gb，儲存為 ref/taxonomy_tidy.txt 與 taxonomy_tidy_IDs.txt，內有分類資訊 |  Done  |
+| tidy_ref.Rmd | - 整理 ncbi 下載 ~640000 個序列的 ref/sequence.gb，儲存為 ref/taxonomy_tidy.txt 與 taxonomy_tidy_IDs.txt，內有分類資訊 |  Done  |
 | train.sh  | - 根據整理好的 ref/taxonomy_tidy.txt 篩選 ref/sequence.fasta，只留下有完整分類資訊的序列 （ref/tidy_extract.fasta） |  Done  |
 | train.sh  | - 用工具去整理 ref/taxonomy_tidy.txt 與 ref/tidy_extract.fasta 格式，使其可以被訓練成 rdp classifier |  Done  |
 | train.sh  | - train rdp classifier，生成 rdp_training 資料夾 |  Done  |
