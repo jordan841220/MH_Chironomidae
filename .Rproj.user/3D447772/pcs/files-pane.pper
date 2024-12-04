@@ -1,6 +1,10 @@
 {
-    "path": "~/projects",
+    "path": "~/projects/Chiro/02.Classifier_Results/ref",
     "sortOrder": [
+        {
+            "columnIndex": 4,
+            "ascending": false
+        },
         {
             "columnIndex": 2,
             "ascending": true

@@ -16,30 +16,22 @@
 | visualization.Rmd | - 用 R 做格式整理與用 R package GUniFrac 生成圖片 "rarecurve.pdf" ，與 zotu matrix "sample_zotu_matrix_raw.csv" 。 <br> - 生成標準化後的 "sample_zotu_matrix_norm.csv"，判定可以移除樣站 "A3" "A9" "D6" "S3" "S6" "S9"？ | Done |
 | visualization.Rmd | - plots: Alpha Diversity, PCoA, Heatmap, and clustering relative abundance (barplot+dendrogram)  | Done  |
 
-
 <br>
 <br>
 
+### 分析流程 2 - Assign Taxonomy to ZOTU
 
-### 分析流程 2 - GAPPA
+- 此處的分析目的為訓練 RDP classifier 並分類所有 ZOTU，結果儲存在 02.Classifier_Results 中
+- ncbi search term: `((((("Diptera"[Organism] OR Diptera[All Fields]) AND "Diptera"[Organism]) NOT sp.[All Fields]) NOT spp.[All Fields]) AND COI[All Fields]) AND 5P[All Fields] AND ("640"[SLEN] : "660"[SLEN])`
 
-- 此處的分析目的為整理 NCBI 下載之所有搖蚊 fasta 成 reference，建立 phylogenetic tree 後，將所有樣站的 reads align 到這個 tree 上，結果儲存在 02.GAPPA_Results 中
-- phylogenetic tree 檔案太大所以會另外改，不會放上來
-
-| Script      | Description                      | Status |
-|------------|----------------------------------|---------|
-| tidy_ref.sh | - 從 NCBI 下載 Chironomidae DNA fasta (COI-5P)，條件為長度介於 640-660 之間（02.GAPPA_Results/ref） | Done |
-| tidy_ref.sh | - 整理下載的 ref_Chiro_COI_5P_20241129.fasta，包含 unique 與去除沒有完整物種名稱的序列  | Done |
-| tidy_ref.sh | - 使用 mafft 將 reference fasta 做 MSA，生成 02.GAPPA_Results/mafft_results/ncbi_ref.fasta | Done |
-| tidy_ref.sh | - trimAL 對 mafft_results/ncbi_ref.fasta 進行切除，生成 02.GAPPA_Results/trimal_results/ncbi_ref_trimal.fasta 與 02.GAPPA_Results/trimal_results/ncbi_ref_trimal.html  | Done |
-| tidy_ref.sh | - 用 raxml-ng 建立 phylogenetic tree，生成 ... | Running |
-| tidy_ref.sh | - Performing bootstrap convergence assessment using autoMRE criterion | Running |
-|      | - 建立 annotation .txt file 方便在 treeviewer 中視覺化 2024-11-29.raxml.bootstraps  | Pending |
-|      | - Download reference tree and rooted it in TreeViewer  | Pending |
-| tidy_ref.sh | - align query fragments (each sample) to reference，生成 align_per_sample/align_${i}_to_ref.fasta <br> - Split MSA to only include query MSA (sample only) | Running |
-| tidy_ref.sh | - epa-ng 生成 jplace file 在 epa_results/ 中 | Running |
-| tidy_ref.sh | - GAPPA | Running |
-|      | - Visualization in R and TreeViewer | Pending |
+| Script      | 處理過程                      | 狀態 |
+|------------|----------------------------------|-----|
+| tidy_ref.Rmd | - 整理 ncbi 下載的 sequence.gb，儲存為 ref/taxonomy_tidy.txt 與 taxonomy_tidy_IDs.txt，內有分類資訊 |  Done  |
+| train.sh  | - 根據整理好的 ref/taxonomy_tidy.txt 篩選 ref/sequence.fasta，只留下有完整分類資訊的序列 （ref/tidy_extract.fasta） |  Done  |
+| train.sh  | - 用工具去整理 ref/taxonomy_tidy.txt 與 ref/tidy_extract.fasta 格式，使其可以被訓練成 rdp classifier |  Done  |
+| train.sh  | - train rdp classifier，生成 rdp_training 資料夾 |  Done  |
+| classify.sh  | - 利用訓練好的 rdp classifier 去對 zotu.fa 進行分類，結果為 zotu_taxonomy.txt  |  Done  |
+| visualization.Rmd  | - filter out confidence 不高的分類結果，進行視覺化  |  Done  |
 
 <br>
 <br>
