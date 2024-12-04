@@ -24,6 +24,7 @@
 - 此處的分析目的為訓練 RDP classifier 並分類所有 ZOTU，結果儲存在 02.Classifier_Results 中
 - ncbi search term: `(((((("Arthropoda"[Organism] OR Arthropoda[All Fields]) OR ("Annelida"[Organism] OR Annelida[All Fields])) OR ("Nematoda"[Organism] OR Nematoda[All Fields])) OR ("Platyhelminthes"[Organism] OR Platyhelminthes[All Fields])) OR ("Myxozoa"[Organism] OR Myxozoa[All Fields])) NOT sp.[All Fields]) AND COI[All Fields] AND ("640"[SLEN] : "660"[SLEN])`
 - ncbi 下載為 ref/sequence.gb 與 ref/sequence.fasta，因為檔案過大所以會另外給
+- rdp_classifier_2.14 分類器也因為太大而不會上傳上來，只保留根據我們資料訓練好的  02.Classifier_Results/rdp_training
 
 | Script      | 處理過程                      | 狀態 |
 |------------|----------------------------------|-----|
@@ -32,7 +33,7 @@
 | train.sh  | - 用工具去整理 ref/taxonomy_tidy.txt 與 ref/tidy_extract.fasta 格式，使其可以被訓練成 rdp classifier |  Done  |
 | train.sh  | - train rdp classifier，生成 rdp_training 資料夾 |  Done  |
 | classify.sh  | - 利用訓練好的 rdp classifier 去對 zotu.fa 進行分類，結果為 zotu_taxonomy.txt  |  Done  |
-| visualization.Rmd  | - filter out confidence 不高的分類結果，進行視覺化  |  Done  |
+| visualization.Rmd  | - filter out confidence 不高的分類結果，進行視覺化  |  Running  |
 
 <br>
 <br>
