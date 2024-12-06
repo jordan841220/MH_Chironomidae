@@ -24,7 +24,7 @@
 - 此處的分析目的為訓練 RDP classifier 並分類所有 ZOTU，結果儲存在 02.Classifier_Results 中
 - ncbi search term: `(((((("Arthropoda"[Organism] OR Arthropoda[All Fields]) OR ("Annelida"[Organism] OR Annelida[All Fields])) OR ("Nematoda"[Organism] OR Nematoda[All Fields])) OR ("Platyhelminthes"[Organism] OR Platyhelminthes[All Fields])) OR ("Myxozoa"[Organism] OR Myxozoa[All Fields])) NOT sp.[All Fields]) AND COI[All Fields] AND ("640"[SLEN] : "660"[SLEN])`
 - ncbi 下載為 ref/sequence.gb 與 ref/sequence.fasta
-- 02.Classifier_Results 整個資料夾會另外給予
+- 02.Classifier_Results 整個資料夾會另外給予（請自 http://gofile.me/6zAKe/BIALgNMTa 下載）
 
 | Script      | 處理過程                      | 狀態 |
 |------------|----------------------------------|-----|
