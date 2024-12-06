@@ -28,7 +28,7 @@
 
 | Script      | 處理過程                      | 狀態 |
 |------------|----------------------------------|-----|
-| tidy_ref.Rmd | - 整理 ncbi 下載 ~640000 個序列的 ref/sequence.gb，儲存為 ref/taxonomy_tidy.txt 與 taxonomy_tidy_IDs.txt，內有分類資訊 |  Done  |
+| tidy_ref.Rmd | - 整理 ncbi 下載 641655 個序列的 ref/sequence.gb，儲存為 ref/taxonomy_tidy.txt 與 taxonomy_tidy_IDs.txt，內有分類資訊，去除 convergent evolution |  Done  |
 | train.sh  | - 根據整理好的 ref/taxonomy_tidy.txt 篩選 ref/sequence.fasta，只留下有完整分類資訊的序列 （ref/tidy_extract.fasta） |  Done  |
 | train.sh  | - 用工具去整理 ref/taxonomy_tidy.txt 與 ref/tidy_extract.fasta 格式，使其可以被訓練成 rdp classifier |  Done  |
 | train.sh  | - train rdp classifier，生成 rdp_training 資料夾 |  Done  |
